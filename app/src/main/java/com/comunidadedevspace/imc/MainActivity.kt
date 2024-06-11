@@ -1,5 +1,6 @@
 package com.comunidadedevspace.imc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,11 +27,19 @@ class MainActivity : AppCompatActivity() {
             val pesoStr: String = edtPeso.text.toString()
             val alturaStr: String = edtAltura.text.toString()
 
-            if(pesoStr == "") {
+            if (pesoStr == "") {
                 //Mostrar mensagem para usuário
-                Snackbar.make(edtPeso, "Por favor, digite um número válido para peso. Ex: 70.5", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    edtPeso,
+                    "Por favor, digite um número válido para peso. Ex: 70.5",
+                    Snackbar.LENGTH_LONG
+                ).show()
             } else if (alturaStr == "") {
-                Snackbar.make(edtAltura,"Por favor, digite um número válido para altura. Ex: 1.70", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    edtAltura,
+                    "Por favor, digite um número válido para altura. Ex: 1.70",
+                    Snackbar.LENGTH_LONG
+                ).show()
             } else {
                 val peso = pesoStr.toFloat()
                 val altura = alturaStr.toFloat()
@@ -39,7 +48,20 @@ class MainActivity : AppCompatActivity() {
                 val alturaQ2 = altura * altura
                 val resultado = peso / alturaQ2
 
-                println("Marcos sua altura é: " + alturaStr + " e seu peso é " + pesoStr + " o resultado é " + resultado)
+                // Navegar para próxima tela
+                // Criar o Layout da próxima tela
+                // Passar dados (resultado) para próxima tela
+
+                // Para chamar a próxima tela, precisamos usar o Intent
+                // Intent é uma classe do próprio android e serve para declarar a inteção de fazer algo no sistema operacional android
+                // Intent explicita e Intent Implicita
+
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra("KEY_RESULT_IMC", resultado)
+                startActivity(intent)
+
+
+                println("Marcos botao " + resultado)
 
             }
         }
