@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -31,7 +32,15 @@ class ResultActivity : AppCompatActivity() {
             "OBESIDADE GRAVE"
         }
 
-        tvClassificacao.text = classificacao
+        when (classificacao.toUpperCase()) {
+            "MAGREZA" -> tvClassificacao.setTextColor(ContextCompat.getColor(this, R.color.magreza))
+            "NORMAL" -> tvClassificacao.setTextColor(ContextCompat.getColor(this, R.color.normal))
+            "SOBREPESO" -> tvClassificacao.setTextColor(ContextCompat.getColor(this, R.color.sobrepeso))
+            "OBESIDADE" -> tvClassificacao.setTextColor(ContextCompat.getColor(this, R.color.obesidade))
+            "OBESIDADE GRAVE" -> tvClassificacao.setTextColor(ContextCompat.getColor(this, R.color.obesidade_grave))
+            else -> tvClassificacao.setTextColor(ContextCompat.getColor(this, R.color.normal))
+        }
 
+        tvClassificacao.text = classificacao
     }
 }
