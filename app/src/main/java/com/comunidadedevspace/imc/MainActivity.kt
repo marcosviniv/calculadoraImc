@@ -60,9 +60,9 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("KEY_RESULT_IMC", resultado)
                 startActivity(intent)
 
-
-                println("Marcos botao " + resultado)
-
+                // Cores
+                //EditText Background + Icone
+                // Gradiente + icone + titulo + descricrição
             }
         }
 
